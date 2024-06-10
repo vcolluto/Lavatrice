@@ -98,6 +98,14 @@ public class Lavatrice {
 		temperatura=0;
 		detersivoPresente=false;
 	}
+
+	@Override
+	public String toString() {
+		return "Lavatrice [sportello: " + (sportelloChiuso?"chiuso":"aperto")				
+				+ ", stato: " + (stato==0?"spento":(stato==1?"standby":"lavaggio in corso")) +
+				", detersivo: " + (detersivoPresente?"presente":"non presente") +
+				", temperatura=" + temperatura + "]";
+	}
 	
 	
 	

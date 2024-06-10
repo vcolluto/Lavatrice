@@ -53,7 +53,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		Lavatrice l=new Lavatrice();
-		
+		l.accendi();
 		System.out.println(l.toString());
 		
 		
