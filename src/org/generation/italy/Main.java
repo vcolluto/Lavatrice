@@ -4,7 +4,7 @@
 Scrivere una classe “Lavatrice” che contiene i seguenti attributi:
 
 boolean sportelloChiuso (indica se lo sportello è chiuso)
-int stato (0: spenta; 1:standby; 2: lavaggio in corso)
+int stato (0: spenta; 1:standby; 2:lavaggio in corso)
 boolean detersivoPresente (indica se è stato aggiunto il detersivo)
 int temperatura
 
@@ -45,10 +45,18 @@ rinominare il metodo  avviaLavaggio() in avviaProgramma(); il messaggio deve ess
 
 package org.generation.italy;
 
+import org.generation.italy.model.Lavatrice;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		Lavatrice l=new Lavatrice();
+		
+		System.out.println(l.toString());
+		
+		
 
 	}
 
