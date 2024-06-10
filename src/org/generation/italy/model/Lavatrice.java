@@ -4,7 +4,9 @@ public class Lavatrice {
 	private boolean sportelloChiuso;		//indica se lo sportello è chiuso
 	private int stato;						//0: spenta; 1:standby; 2: lavaggio in corso
 	private boolean detersivoPresente;		//indica se è stato aggiunto il detersivo
-	private int temperatura;				//tra 0 e 90
+	
+	private Programma[] elencoProgrammi;	//contiene sia oggetti di tipo "Lavaggio" che oggetti di tipo "Operazione" 	(POLIMORFISMO)
+	
 	
 	
 	public void accendi() {
@@ -47,16 +49,11 @@ public class Lavatrice {
 	
 	
 
-	public void impostaTemperatura(int temperatura) {
-		if (temperatura>=0 && temperatura<=90)
-			this.temperatura = temperatura;
-		else
-			System.out.println("Temperatura non valida");	
-	}
+	
 	
 	public void avviaLavaggio() {
 		if (sportelloChiuso && stato==1 && detersivoPresente) {
-			System.out.println("lavaggio in corso a "+ temperatura +" gradi");
+			//System.out.println("lavaggio in corso a "+ temperatura +" gradi");
 			stato=2;
 		}
 		else
@@ -86,25 +83,30 @@ public class Lavatrice {
 		return stato;
 	}
 
-	public int getTemperatura() {
-		return temperatura;
-	}
-
-	public Lavatrice() {
+	//costruttore
+	public Lavatrice() throws Exception {
 		//super();		//chiamata implicita al costruttore della superclasse
 		super();		//chiamata esplicita al costruttore della superclasse
 		sportelloChiuso=true;
-		stato=0;
-		temperatura=0;
+		stato=0;		
 		detersivoPresente=false;
+		//inizializzo i programmi
+		elencoProgrammi=new Programma[] {
+			new Lavaggio("Cotone",30,45),
+			new Lavaggio("Lana",40,30),
+			new Lavaggio("Jeans",50,45),	
+			new Operazione("Centrifuga", 15, true),
+			new Operazione("Risciacquo", 10, true),
+			new Operazione("Scarico acqua", 5, true),
+			new Operazione("Asciugatura", 25, false)
+		};
 	}
 
 	@Override
 	public String toString() {
 		return "Lavatrice [sportello: " + (sportelloChiuso?"chiuso":"aperto")				
 				+ ", stato: " + (stato==0?"spento":(stato==1?"standby":"lavaggio in corso")) +
-				", detersivo: " + (detersivoPresente?"presente":"non presente") +
-				", temperatura=" + temperatura + "]";
+				", detersivo: " + (detersivoPresente?"presente":"non presente") ;
 	}
 	
 	

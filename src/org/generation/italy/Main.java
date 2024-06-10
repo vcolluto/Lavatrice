@@ -47,15 +47,31 @@ package org.generation.italy;
 
 import java.util.Scanner;
 
+import org.generation.italy.model.Lavaggio;
 import org.generation.italy.model.Lavatrice;
+import org.generation.italy.model.Operazione;
+import org.generation.italy.model.Programma;
 
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
+		Lavatrice l;
+		try {
+			l = new Lavatrice();
+			
+			
+		} catch (Exception e) {
+			System.err.println("Impossibile creare la lavatrice: "+ e.getMessage());			
+			return;	//esci dal programma
+		}
+		
+		
+		
 		Scanner sc = new Scanner(System.in);
-		Lavatrice l=new Lavatrice();
-		String scelta;
+		String scelta;	
+		
+		
 		do{
 			System.out.println("\n\n\n\n\n\n\nGestione lavatrice:");
 			System.out.println("1. Accendi");
@@ -80,8 +96,7 @@ public class Main {
 				l.accendi();				
 				break;
 			case "2":
-				l.spegni();
-					
+				l.spegni();					
 				break;
 			case "3":
 				l.apriSportello();
@@ -96,7 +111,7 @@ public class Main {
 				System.out.print("Inserisci la temperatura (0-90):");
 				try {
 					int temperatura = Integer.parseInt(sc.nextLine());
-					l.impostaTemperatura(temperatura);
+					//l.impostaTemperatura(temperatura);
 				} catch (NumberFormatException e) {
 					System.out.println("Temperatura non valida");
 				}
