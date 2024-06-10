@@ -54,13 +54,26 @@ public class Lavatrice {
 	
 	
 	public void avviaProgramma() {
+		//requisiti attuali:
+		// -sportello chiuso
+		// -stato standby
+		// -detersivo presente
+		
+		//requisiti da ottenere:
+		// -sportello chiuso
+		// -stato standby
+		// -detersivo presente (dipende dal programma)
+				
 		if (programmaCorrente>=0) {
-			if (sportelloChiuso && stato==1 && detersivoPresente) {
-				System.out.println(
-					"Programma "+ elencoProgrammi[programmaCorrente].getNome()+ " in corso. "
-					+ "Durata prevista: "+ elencoProgrammi[programmaCorrente].getDurata()+ " minuti");
-				stato=2;
-			}
+			if (elencoProgrammi[programmaCorrente].isDetersivoNecessario() && !detersivoPresente)
+				System.out.println("Per avviare il programma è necessario il detersivo");
+			else 
+				if (sportelloChiuso && stato==1) {
+					System.out.println(
+						"Programma "+ elencoProgrammi[programmaCorrente].getNome()+ " in corso. "
+						+ "Durata prevista: "+ elencoProgrammi[programmaCorrente].getDurata()+ " minuti");
+					stato=2;
+				}
 			else
 				System.out.println("Impossibile avviare il programma");	
 		} else
@@ -99,13 +112,13 @@ public class Lavatrice {
 		detersivoPresente=false;
 		//inizializzo i programmi
 		elencoProgrammi=new Programma[] {
-			new Lavaggio("Cotone",30,45),
-			new Lavaggio("Lana",40,30),
-			new Lavaggio("Jeans",50,45),	
-			new Operazione("Centrifuga", 15, true),
-			new Operazione("Risciacquo", 10, true),
-			new Operazione("Scarico acqua", 5, true),
-			new Operazione("Asciugatura", 25, false)
+			new Lavaggio("Cotone",30, true ,45),
+			new Lavaggio("Lana",40, true, 30),
+			new Lavaggio("Jeans",50,true, 45),	
+			new Operazione("Centrifuga", 15,false, true),
+			new Operazione("Risciacquo", 10, false,true),
+			new Operazione("Scarico acqua", 5,false, true),
+			new Operazione("Asciugatura", 25,false, false)
 		};
 		programmaCorrente=-1;		//-1: non è stato selezionato il programma
 	}

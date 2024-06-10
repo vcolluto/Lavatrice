@@ -4,8 +4,8 @@ package org.generation.italy.model;
 public class Operazione extends Programma {
 	private boolean presenzaAcqua;
 
-	public Operazione(String nome, int durata, boolean presenzaAcqua) throws Exception {
-		super(nome, durata);
+	public Operazione(String nome, int durata, boolean detersivoNecessario, boolean presenzaAcqua) throws Exception {
+		super(nome, durata,detersivoNecessario);
 		this.presenzaAcqua = presenzaAcqua;
 	}
 

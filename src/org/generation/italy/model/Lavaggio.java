@@ -5,8 +5,8 @@ public class Lavaggio extends Programma {
 	
 	private int temperatura;
 
-	public Lavaggio(String nome, int durata, int temperatura) throws Exception {
-		super(nome, durata);		//chiamata al costruttore della superclasse (Programma)
+	public Lavaggio(String nome, int durata,boolean detersivoNecessario, int temperatura) throws Exception {
+		super(nome, durata, detersivoNecessario);		//chiamata al costruttore della superclasse (Programma)
 		
 		if (temperatura>=0 && temperatura<=90)
 			this.temperatura = temperatura;

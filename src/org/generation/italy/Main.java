@@ -47,10 +47,7 @@ package org.generation.italy;
 
 import java.util.Scanner;
 
-import org.generation.italy.model.Lavaggio;
 import org.generation.italy.model.Lavatrice;
-import org.generation.italy.model.Operazione;
-import org.generation.italy.model.Programma;
 
 
 public class Main {

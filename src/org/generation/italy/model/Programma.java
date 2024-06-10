@@ -4,9 +4,10 @@ package org.generation.italy.model;
 public class Programma {
 	private String nome;
 	private int durata;
+	private boolean detersivoNecessario;
 	
 	//rappresenta un programma della lavatrice (es: "cotone", "lana", ecc.)
-	public Programma(String nome, int durata) throws Exception {
+	public Programma(String nome, int durata, boolean detersivoNecessario) throws Exception {
 		super();
 		if (!nome.isBlank())
 			this.nome = nome;
@@ -17,6 +18,8 @@ public class Programma {
 			this.durata = durata;
 		else
 			throw new Exception("durata non valida");
+		
+		this.detersivoNecessario=detersivoNecessario;
 	}
 
 	public String getNome() {
@@ -30,6 +33,10 @@ public class Programma {
 	@Override
 	public String toString() {
 		return "Programma [nome=" + nome + ", durata=" + durata + "]";
+	}
+
+	public boolean isDetersivoNecessario() {
+		return detersivoNecessario;
 	}
 	
 	
