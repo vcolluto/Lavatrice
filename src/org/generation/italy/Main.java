@@ -110,9 +110,11 @@ public class Main {
 			
 			case "0":
 				System.out.println("Arrivederci!");
+				break;
 			default:
 				System.out.println("Scelta non valida. Riprova.");
 				break;
+				
 			}
 			System.out.println("\nPremi invio per continuare...");
 			sc.nextLine();
