@@ -39,7 +39,7 @@ presenzaAcqua (boolean)
 Aggiungere alla classe Lavatrice:
 un array di Programma, contenente alcuni oggetti di Lavaggio (es: "cotone", "jeans", "delicati") e alcuni oggetti di Operazione (es: "centrifuga", "risciacquo", "scarico acqua")
 un attributo programmaCorrente (int)
-un metodo selezionaProgramma(int programma)
+un metodo setProgramma(int programma)
 rinominare il metodo  avviaLavaggio() in avviaProgramma(); il messaggio deve essere: “Programma <nome programma> in corso. Durata prevista: <durata programma> minuti"
  */
 
@@ -79,9 +79,9 @@ public class Main {
 			System.out.println("3. Apri sportello");
 			System.out.println("4. Chiudi sportello");
 			System.out.println("5. Aggiungi detersivo");
-			System.out.println("6. Imposta temperatura");
-			System.out.println("7. Avvia lavaggio");
-			System.out.println("8. Termina lavaggio");
+			System.out.println("6. Imposta programma");
+			System.out.println("7. Avvia programma");
+			System.out.println("8. Termina programma");
 			System.out.println("0. Esci\n");
 
 			
@@ -108,19 +108,22 @@ public class Main {
 				l.aggiungiDetersivo();
 				break;
 			case "6":
-				System.out.print("Inserisci la temperatura (0-90):");
+				System.out.println("Elenco programmi:");
+				for (int i=0; i<l.getElencoProgrammi().length;i++)
+					System.out.println(i+ " - " +l.getElencoProgrammi()[i].getNome());
+				System.out.print("Inserisci il nr del programma:");
 				try {
-					int temperatura = Integer.parseInt(sc.nextLine());
-					//l.impostaTemperatura(temperatura);
+					int nrProgramma = Integer.parseInt(sc.nextLine());
+					l.setProgrammaCorrente(nrProgramma);
 				} catch (NumberFormatException e) {
-					System.out.println("Temperatura non valida");
+					System.err.println("Programma non valido");
 				}
 				break;
 			case "7":
-				l.avviaLavaggio();
+				l.avviaProgramma();
 				break;
 			case "8":
-				l.terminaLavaggio();
+				l.terminaProgramma();
 				break;
 			
 			case "0":
