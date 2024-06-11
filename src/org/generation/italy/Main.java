@@ -47,7 +47,10 @@ package org.generation.italy;
 
 import java.util.Scanner;
 
+import org.generation.italy.model.Lavaggio;
 import org.generation.italy.model.Lavatrice;
+import org.generation.italy.model.Operazione;
+import org.generation.italy.model.Programma;
 
 
 public class Main {
@@ -106,8 +109,22 @@ public class Main {
 				break;
 			case "6":
 				System.out.println("Elenco programmi:");
-				for (int i=0; i<l.getElencoProgrammi().length;i++)
-					System.out.println(i+ " - " +l.getElencoProgrammi()[i].getNome());
+				for (int i=0; i<l.getElencoProgrammi().length;i++) {
+					Programma p=l.getElencoProgrammi()[i];
+					
+					System.out.print(i+ " - " +p.getNome());
+					// se il programma p è "di tipo Lavaggio" mostra un'informazione,
+					// altrimenti se il programma p è "di tipo Operazione" mostrane un'altra					
+					
+					if (p instanceof Lavaggio)	//p è di tipo Lavaggio
+						System.out.println(" (Lavaggio)"
+							+ " - Temperatura: "+((Lavaggio)p).getTemperatura());	//casting: tratta l'oggetto p (di tipo Programma) come se fosse di tipo Lavaggio
+					else	//p è di tipo Operazione
+						System.out.println(" (Operazione)"
+							+ " - Presenza acqua: "+((Operazione)p).isPresenzaAcqua()); //casting: tratta l'oggetto p (di tipo Programma) come se fosse di tipo Operazione
+					
+				}
+					
 				System.out.print("Inserisci il nr del programma:");
 				try {
 					int nrProgramma = Integer.parseInt(sc.nextLine());

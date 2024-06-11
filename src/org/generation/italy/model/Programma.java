@@ -2,9 +2,9 @@ package org.generation.italy.model;
 
 //superclasse
 public class Programma {
-	private String nome;
-	private int durata;
-	private boolean detersivoNecessario;
+	protected String nome;							//protected: sono visibili anche nelle sottoclassi (e nella stessa classe e nello stesso package)
+	protected int durata;
+	protected boolean detersivoNecessario;
 	
 	//rappresenta un programma della lavatrice (es: "cotone", "lana", ecc.)
 	public Programma(String nome, int durata, boolean detersivoNecessario) throws Exception {

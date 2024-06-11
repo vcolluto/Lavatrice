@@ -17,6 +17,11 @@ public class Lavaggio extends Programma {
 	public int getTemperatura() {
 		return temperatura;
 	}
+
+	@Override
+	public String toString() {
+		return "Lavaggio [nome="+nome+", durata="+durata+",temperatura=" + temperatura + "]";
+	}
 	
 	
 	

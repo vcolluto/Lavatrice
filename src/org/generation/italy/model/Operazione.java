@@ -12,5 +12,13 @@ public class Operazione extends Programma {
 	public boolean isPresenzaAcqua() {
 		return presenzaAcqua;
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Operazione [nome=" + nome + ", durata=" + durata
+				+ ", detersivoNecessario=" + detersivoNecessario + ", presenzaAcqua=" + presenzaAcqua + "]";
+	}
 
 }
